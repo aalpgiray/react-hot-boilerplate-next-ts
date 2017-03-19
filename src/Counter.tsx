@@ -20,7 +20,6 @@ export default class Counter extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.changeCounter.bind(this);
   }
 
 
@@ -45,7 +44,9 @@ export default class Counter extends Component<Props, State> {
   render() {
     return (
       <div>
-        <input type="number" value={this.props.counterStore.counter} onChange={this.changeCounter} />
+        <div className="col-md-1">
+        <input className="form-control" type="number" value={this.props.counterStore.counter} onChange={this.changeCounter.bind(this)} />
+          </div>
         <h2>Counter: {this.props.counterStore.counter}</h2>
       </div>
     )

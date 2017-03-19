@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
@@ -32,7 +33,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   module: {
     rules: [
