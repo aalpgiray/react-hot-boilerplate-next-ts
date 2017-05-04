@@ -1,11 +1,12 @@
 import * as React from 'react';
 import Layout from './Layout';
-import Counter from './Counter';
+import Counter from './components/counter';
 import { Component } from "react";
 import { store } from './store';
-import { Router, browserHistory, Route } from "react-router";
-import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import { Router, Route, Link } from 'react-router-dom';
 import { Provider } from 'mobx-react';
+import { syncHistoryWithStore, RouterStore } from "mobx-react-router";
+import { createBrowserHistory } from "history";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -15,16 +16,17 @@ import { Provider } from 'mobx-react';
 // https://github.com/reactjs/react-router/issues/2182
 
 const routerStore = new RouterStore();
-const history = syncHistoryWithStore(browserHistory, routerStore)
+const history = syncHistoryWithStore(createBrowserHistory(), routerStore)
 
 export default class App extends Component<{}, {}> {
   render() {
     return (
       <Layout>
-        {/*<Counter store={store.CounterStore} />*/}
         <Provider {...store}>
           <Router history={history}>
-            <Route path="/" component={Counter} />
+            <div>
+              <Route path="/" exact component={Counter} />
+            </div>
           </Router>
         </Provider>
       </Layout>

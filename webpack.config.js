@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  
+
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
@@ -37,6 +37,18 @@ module.exports = {
 
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.css$/,
+      //   exclude: /node_modules/,
+      //   loader: 'typed-css-modules-loader'
+      //   // or in case you want to use parameters:
+      //   // loader: 'typed-css-modules?outDir=/tmp'
+      // },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
       {
         test: /\.tsx?$/,
         use: [

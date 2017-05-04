@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx'
+import { RouterStore } from "mobx-react-router/types";
 
 export interface ICounterStore {
     counter: number;
