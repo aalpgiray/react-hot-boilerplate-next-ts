@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Layout from './Layout';
-import Counter from './components/counter';
 import { Component } from "react";
-import { store } from './store';
+import { store, history } from './store';
 import { Router, Route, Link } from 'react-router-dom';
-import { Provider } from 'mobx-react';
-import { syncHistoryWithStore, RouterStore } from "mobx-react-router";
-import { createBrowserHistory } from "history";
+
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import { AppComponent } from './components/app';
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -15,21 +15,22 @@ import { createBrowserHistory } from "history";
 // You can ignore this warning. For details, see:
 // https://github.com/reactjs/react-router/issues/2182
 
-const routerStore = new RouterStore();
-const history = syncHistoryWithStore(createBrowserHistory(), routerStore)
 
 export default class App extends Component<{}, {}> {
   render() {
     return (
-      <Layout>
-        <Provider {...store}>
-          <Router history={history}>
+      <Provider store={store} >
+        <ConnectedRouter history={history}>
+          <Layout>
             <div>
-              <Route path="/" exact component={Counter} />
+              <Link to="/" >Home</Link>
+              <Link to="/app" >App</Link>
+              <Route path="/" exact render={() => <h1>Home</h1>} />
+              <Route path="/app" exact component={AppComponent} />
             </div>
-          </Router>
-        </Provider>
-      </Layout>
+          </Layout>
+        </ConnectedRouter>
+      </Provider>
     );
   }
 }

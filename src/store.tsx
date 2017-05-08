@@ -1,29 +1,20 @@
-import { observable, action } from 'mobx'
-import { RouterStore } from "mobx-react-router/types";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
-export interface ICounterStore {
-    counter: number;
-    count: (by?: number) => void;
-    setCounter: (value: number) => void;
-}
+import { createBrowserHistory } from 'history';
 
-export interface IStore {
-    counterStore: ICounterStore;
-}
+import invariant from 'redux-immutable-state-invariant';
 
-class Store implements IStore {
-    counterStore = new CounterStore();
-}
+export const history = createBrowserHistory();
 
-class CounterStore implements ICounterStore {
-    @observable counter = 1;
-    @action count(by?: number) {
-        if (by != null) this.counter = this.counter + by;
-        else this.counter++;
-    }
-    @action setCounter(value: number) {
-        this.counter = value;
-    }
-}
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = new Store();
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+const middleware = routerMiddleware(history)
+
+export const store = createStore(
+    combineReducers({
+        router: routerReducer
+    }),
+    composeEnhancers(applyMiddleware(middleware)),
+);

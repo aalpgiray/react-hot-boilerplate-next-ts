@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Component } from 'react';
-import { observer } from 'mobx-react'
 import { ICounterStore, IStore } from '../.././store';
-import { inject } from 'mobx-react';
 
 import * as styles from './style.css';
 import { RouteComponentProps, match } from "react-router";
