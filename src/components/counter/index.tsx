@@ -1,4 +1,4 @@
-import * as React from "react";
+/*import * as React from "react";
 import { Component } from 'react';
 import { ICounterStore, IStore } from '../.././store';
 
@@ -54,4 +54,4 @@ export default class Counter extends Component<IProps, State> {
       </div>
     )
   }
-}
+}*/
