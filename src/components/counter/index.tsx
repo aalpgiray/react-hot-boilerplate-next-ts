@@ -54,7 +54,7 @@ class Counter extends Component<IProps, State> {
   render() {
     return (
       <div className="row">
-        <h2 className={styles.title + " col-md-12"}>Counter : <span className={styles.counterColor}>{this.props.counterStore.value}</span></h2>
+        <h2 className={styles.title + " col-md-12"}>Counter: <span className={styles.counterColor}>{this.props.counterStore.value}</span></h2>
       </div>
     )
   }

@@ -8,7 +8,7 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
     "postbuild": "copyfiles index.html dist",
-    "createCssTypes":"tcm src"
+    "createCssTypes": "tcm src"
   },
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "copyfiles": "^1.2.0",
     "cross-env": "^3.2.3",
-    "react-hot-loader": "3",
+    "react-hot-loader": "next",
     "rimraf": "^2.6.1",
     "webpack": "^2.5.0",
     "webpack-dev-server": "^2.4.5"

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-export default class Layout extends Component<{}, {}> {
+export class Layout extends Component<{}, {}> {
   render() {
     return (
       <Container fluid>

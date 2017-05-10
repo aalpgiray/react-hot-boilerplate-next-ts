@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Nav, NavItem } from "reactstrap";
-import { NavLink as Link } from 'react-router-dom';
-import { Component } from 'react';
+import { NavLink } from '../../helpers/navlink';
 
 export const NavigationPannel = () => {
     return (
@@ -30,18 +29,4 @@ export const NavigationPannel = () => {
             </NavItem>
         </Nav>
     )
-}
-
-class NavLink extends Component<{ to: any, activeClassName?: string, exact?: any, className?: string }, {}> {
-    render() {
-        return (
-            <Link
-                activeClassName={this.props.activeClassName || "" }
-                className={`nav-link ${this.props.className || ""}`}
-                exact={this.props.exact}
-                to={this.props.to}>
-                {this.props.children}
-            </Link>
-        );
-    }
 }

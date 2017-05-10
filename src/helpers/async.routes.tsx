@@ -10,8 +10,14 @@ export interface IAsyncRouteProps {
 }
 
 export const AsyncRoute = (props: IAsyncRouteProps) => {
-    let Loading = props.loadingComponent;
-    return <Route path={props.path} exact render={() => <Bundle load={props.component} callback={(Mod: any) => {
-        return Mod ? <Mod /> : (props.loadingComponent != null ? <Loading /> : <h1>Yükleniyor...</h1>)
+
+    let {
+        loadingComponent: Loading,
+        component,
+        path
+    } = props;
+
+    return <Route path={path} exact render={() => <Bundle load={component} callback={(Mod: any) => {
+        return Mod ? <Mod /> : (Loading != null ? <Loading /> : <h1>Yükleniyor...</h1>)
     }} />} />
 }
