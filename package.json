@@ -7,7 +7,8 @@
     "lint": "eslint src",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
-    "postbuild": "copyfiles index.html dist"
+    "postbuild": "copyfiles index.html dist",
+    "createCssTypes":"tcm src"
   },
   "repository": {
     "type": "git",
@@ -58,10 +59,12 @@
     "@types/redux-immutable-state-invariant": "^2.0.0",
     "babel-eslint": "^7.1.1",
     "bootstrap": "4",
+    "bundle-loader": "^0.5.5",
     "css-loader": "^0.27.3",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",
     "global": "^4.3.2",
+    "immutable": "^3.8.1",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",

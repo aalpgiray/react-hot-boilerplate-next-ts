@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './app';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import './global.css';
 
 const rootEl = document.getElementById('root');
 const render = (Component: any) =>
@@ -15,4 +15,4 @@ const render = (Component: any) =>
   );
 
 render(App);
-if (module.hot) module.hot.accept('./App', () => render(require("./App").default));
+if (module.hot) module.hot.accept('./app', () => render(require("./app").default));

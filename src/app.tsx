@@ -6,7 +6,8 @@ import { Router, Route, Link } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { NavigationPannel } from './components/nav/nav';
+import { NavigationPannel } from './components/nav';
+import { routes } from './routes';
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -14,6 +15,8 @@ import { NavigationPannel } from './components/nav/nav';
 // you will see a warning from <Router> on every reload.
 // You can ignore this warning. For details, see:
 // https://github.com/reactjs/react-router/issues/2182
+
+
 
 export default class App extends Component<{}, {}> {
   render() {
@@ -23,8 +26,7 @@ export default class App extends Component<{}, {}> {
           <Layout>
             <div>
               <NavigationPannel />
-              <Route path="/" exact render={() => <h1>Home</h1>} />
-              <Route path="/app" exact render={() => <h1>App</h1>} />
+              {routes}
             </div>
           </Layout>
         </ConnectedRouter>

@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 export default class Layout extends Component<{}, {}> {
   render() {
     return (
-      <Container>
-        {this.props.children}
+      <Container fluid>
+        <Row>
+          <Col>
+            {this.props.children}
+          </Col>
+        </Row>
       </Container>
     )
   }

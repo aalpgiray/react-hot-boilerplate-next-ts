@@ -46,9 +46,12 @@ module.exports = {
       //   // loader: 'typed-css-modules?outDir=/tmp'
       // },
       {
-        test: /\.css$/,
-        // loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        test: /\.global\.css$/,
         loader: 'style-loader!css-loader'
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
       },
       {
         test: /\.tsx?$/,
