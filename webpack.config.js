@@ -37,21 +37,15 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.css$/,
-      //   exclude: /node_modules/,
-      //   loader: 'typed-css-modules-loader'
-      //   // or in case you want to use parameters:
-      //   // loader: 'typed-css-modules?outDir=/tmp'
-      // },
       {
-        test: /\.global\.css$/,
-        loader: 'style-loader!css-loader'
+        test: /.css$/,
+        loader: 'style-loader!css-loader',
+        exclude:/src/
       },
       {
-        test: /^((?!\.global).)*\.css$/,
-        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        test: /.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        exclude:/node_modules/
       },
       {
         test: /\.tsx?$/,

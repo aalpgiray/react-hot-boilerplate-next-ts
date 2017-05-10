@@ -2,26 +2,47 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    './src/index.tsx',
+    // the entry point of our app
+  ],
 
   output: {
-    filename: 'static/bundle.js',
+    filename: 'bundle.js',
+    // the output bundle
+
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+
+    // necessary for HMR to know where to load the hot update chunks
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 
   devtool: 'source-map',
 
   module: {
     rules: [
+   {
+        test: /.css$/,
+        loader: 'style-loader!css-loader',
+        exclude:/src/
+      },
       {
-        test: /\.jsx?$/,
+        test: /.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        exclude:/node_modules/
+      },
+      {
+        test: /\.tsx?$/,
         use: [
-          'babel-loader'
+          'babel-loader',
+          'ts-loader',
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
 
   plugins: [
